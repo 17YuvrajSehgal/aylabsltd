@@ -46,16 +46,32 @@ const metrics = [
   { label: "Client Satisfaction", value: "97%" },
 ];
 
-const testimonials = [
+const endorsements = [
   {
-    quote:
-      "AYLabs turned our prototype into a production AI platform that now serves thousands of users daily.",
+    value: "42% faster release cadence",
+    quote: "AYLabs turned our prototype into a production AI platform serving thousands of users daily.",
     author: "Head of Product, MedTech Startup",
   },
   {
+    value: "3.1x feature delivery throughput",
     quote:
       "Their team moves fast, communicates clearly, and ships software our internal team can confidently extend.",
     author: "CTO, Logistics SaaS Company",
+  },
+  {
+    value: "99.95% platform uptime",
+    quote: "We migrated critical systems with zero downtime and better reliability than our prior stack.",
+    author: "VP Engineering, FinTech Scale-Up",
+  },
+  {
+    value: "2.4x mobile conversion uplift",
+    quote: "The new app experience materially improved onboarding and reduced drop-offs in the first week.",
+    author: "Growth Lead, Consumer Health App",
+  },
+  {
+    value: "5 weeks to first AI launch",
+    quote: "They shipped a production-grade AI assistant faster than any previous vendor engagement.",
+    author: "COO, Enterprise Operations Team",
   },
 ];
 
@@ -65,10 +81,21 @@ export default function Home() {
       <div className="background-layer" aria-hidden="true" />
       <section className="hero section">
         <header className="topbar reveal">
-          <div className="brand">AYLabs</div>
-          <Link className="ghost-link" href="/#contact">
-            Book a Consultation
-          </Link>
+          <div className="brand-block">
+            <div className="brand-emblem" aria-hidden="true">
+              <span className="brand-core">AY</span>
+            </div>
+            <div className="brand-copy">
+              <p className="brand-name">AYLabs</p>
+              <p className="brand-tag">AI Software Development Studio</p>
+            </div>
+          </div>
+          <div className="topbar-actions">
+            <p className="status-pill">Shipping AI Products Since 2019</p>
+            <Link className="ghost-link" href="/#contact">
+              Book a Consultation
+            </Link>
+          </div>
         </header>
 
         <div className="hero-grid">
@@ -146,25 +173,39 @@ export default function Home() {
             </div>
           ))}
         </div>
-        <div className="testimonial-grid">
-          {testimonials.map((item, index) => (
-            <blockquote key={item.author} className={`quote reveal delay-${(index % 2) + 1}`}>
-              <p>{item.quote}</p>
-              <cite>{item.author}</cite>
-            </blockquote>
-          ))}
+        <div className="endorsement-marquee reveal delay-1" aria-label="Client endorsements">
+          <div className="endorsement-track">
+            {[...endorsements, ...endorsements].map((item, index) => (
+              <blockquote key={`${item.author}-${index}`} className="endorsement-card">
+                <p className="endorsement-value">{item.value}</p>
+                <p>{item.quote}</p>
+                <cite>{item.author}</cite>
+              </blockquote>
+            ))}
+          </div>
         </div>
       </section>
 
       <section id="contact" className="section cta reveal">
+        <p className="cta-kicker">Start Your Build Sprint</p>
         <h2>Ready to build with AYLabs?</h2>
         <p>
           Tell us your product goals and we will propose a delivery roadmap in a
           focused strategy session.
         </p>
-        <a className="btn btn-primary" href="mailto:hello@aylabs.dev">
-          hello@aylabs.dev
-        </a>
+        <div className="cta-actions">
+          <a className="btn btn-primary cta-primary" href="mailto:hello@aylabs.dev">
+            hello@aylabs.dev
+          </a>
+          <Link className="btn btn-secondary cta-secondary" href="/#services">
+            View Capabilities
+          </Link>
+        </div>
+        <ul className="cta-highlights">
+          <li>Free architecture consult</li>
+          <li>Reply within 24 hours</li>
+          <li>NDA-friendly engagement</li>
+        </ul>
       </section>
     </main>
   );

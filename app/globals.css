@@ -83,16 +83,99 @@ ul {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 1rem;
   padding: 0.8rem 1rem;
   border: 1px solid var(--stroke);
   border-radius: 999px;
-  background: rgba(14, 27, 48, 0.66);
+  background:
+    linear-gradient(115deg, rgba(14, 27, 48, 0.92) 0%, rgba(16, 34, 59, 0.82) 100%);
   backdrop-filter: blur(10px);
+  box-shadow: 0 14px 34px rgba(6, 14, 30, 0.35);
 }
 
-.brand {
-  font-size: 1rem;
+.brand-block {
+  display: flex;
+  align-items: center;
+  gap: 0.78rem;
+}
+
+.brand-emblem {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 0.9rem;
+  background: #112848;
+  border: 1px solid rgba(157, 248, 231, 0.25);
+  overflow: hidden;
+}
+
+.brand-emblem::before {
+  content: "";
+  position: absolute;
+  inset: -45%;
+  background: conic-gradient(
+    from 0deg,
+    rgba(101, 243, 212, 0.95),
+    rgba(136, 184, 255, 0.95),
+    rgba(101, 243, 212, 0.95)
+  );
+  animation: spin-emblem 5s linear infinite;
+}
+
+.brand-emblem::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: 0.82rem;
+  background: #112848;
+}
+
+.brand-core {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-geist-mono);
+  font-size: 0.86rem;
+  letter-spacing: 0.09em;
+  color: #e2f5ff;
+}
+
+.brand-copy {
+  display: grid;
+  gap: 0.1rem;
+}
+
+.brand-name {
+  font-size: 1.15rem;
   font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.brand-tag {
+  font-size: 0.72rem;
+  color: #8fb0dc;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.45rem 0.72rem;
+  border-radius: 999px;
+  border: 1px solid rgba(157, 248, 231, 0.25);
+  background: rgba(101, 243, 212, 0.1);
+  color: #9df8e7;
+  font-size: 0.7rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -100,11 +183,16 @@ ul {
 .ghost-link {
   font-size: 0.88rem;
   color: var(--muted);
-  transition: color 0.2s ease;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  padding: 0.45rem 0.8rem;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
 }
 
 .ghost-link:hover {
   color: var(--text);
+  border-color: rgba(157, 248, 231, 0.25);
+  background: rgba(157, 248, 231, 0.08);
 }
 
 .hero-grid {
@@ -226,8 +314,7 @@ h1 {
 
 .service-grid,
 .process-grid,
-.metrics-grid,
-.testimonial-grid {
+.metrics-grid {
   display: grid;
   gap: 1rem;
 }
@@ -287,19 +374,132 @@ h1 {
   font-size: 0.95rem;
 }
 
+.endorsement-marquee {
+  margin-top: 1rem;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
+.endorsement-track {
+  display: flex;
+  gap: 1rem;
+  width: max-content;
+  animation: marquee-left 34s linear infinite;
+}
+
+.endorsement-card {
+  width: min(28rem, 78vw);
+  flex: 0 0 auto;
+  padding: 1.1rem;
+  border: 1px solid var(--stroke);
+  border-radius: 1.25rem;
+  background: linear-gradient(
+    180deg,
+    rgba(20, 37, 64, 0.9) 0%,
+    rgba(12, 24, 44, 0.9) 100%
+  );
+  box-shadow: var(--shadow);
+}
+
+.endorsement-value {
+  color: #9df8e7;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.endorsement-card p {
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.endorsement-card cite {
+  display: block;
+  margin-top: 0.8rem;
+  color: #cde0ff;
+  font-style: normal;
+  font-size: 0.95rem;
+}
+
 .cta {
+  position: relative;
+  overflow: hidden;
   text-align: center;
-  padding: 2rem 1.2rem;
+  padding: 2.6rem 1.2rem;
+}
+
+.cta::before {
+  content: "";
+  position: absolute;
+  inset: -35% 10% auto;
+  height: 18rem;
+  background: radial-gradient(circle, rgba(101, 243, 212, 0.16) 0%, transparent 68%);
+  pointer-events: none;
 }
 
 .cta h2 {
   font-size: clamp(1.5rem, 4vw, 2.5rem);
   margin-bottom: 0.6rem;
+  position: relative;
+  z-index: 1;
 }
 
 .cta p {
   max-width: 62ch;
   margin: 0 auto 1.2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.cta-kicker {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(157, 248, 231, 0.34);
+  background: rgba(101, 243, 212, 0.1);
+  border-radius: 999px;
+  color: #9df8e7;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.72rem;
+  padding: 0.46rem 0.72rem;
+  margin-bottom: 0.9rem;
+}
+
+.cta-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 0.95rem;
+  position: relative;
+  z-index: 1;
+}
+
+.cta-primary {
+  min-width: 14rem;
+}
+
+.cta-secondary {
+  min-width: 11.5rem;
+}
+
+.cta-highlights {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  position: relative;
+  z-index: 1;
+}
+
+.cta-highlights li {
+  border: 1px solid rgba(142, 178, 226, 0.28);
+  background: rgba(21, 38, 63, 0.75);
+  color: #c6d9f8;
+  border-radius: 999px;
+  padding: 0.35rem 0.65rem;
+  font-size: 0.76rem;
+  letter-spacing: 0.04em;
 }
 
 .reveal {
@@ -327,6 +527,21 @@ h1 {
   }
 }
 
+@keyframes spin-emblem {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes marquee-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-50% - 0.5rem));
+  }
+}
+
 @media (min-width: 780px) {
   .section {
     width: min(1120px, calc(100% - 3rem));
@@ -345,11 +560,31 @@ h1 {
 
   .metrics-grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+@media (max-width: 940px) {
+  .topbar {
+    border-radius: 1.1rem;
+    align-items: flex-start;
+    flex-direction: column;
   }
 
-  .testimonial-grid {
-    margin-top: 1rem;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .topbar-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .status-pill {
+    font-size: 0.64rem;
+  }
+
+  .cta {
+    padding: 2.2rem 1rem;
+  }
+
+  .cta-primary,
+  .cta-secondary {
+    min-width: 100%;
   }
 }
 
@@ -363,4 +598,13 @@ h1 {
   .btn {
     transition: none;
   }
+
+  .endorsement-track {
+    animation: none;
+  }
+
+  .brand-emblem::before {
+    animation: none;
+  }
+}
 }
