@@ -31,7 +31,7 @@ body {
     radial-gradient(circle at 90% 20%, rgba(87, 161, 255, 0.18), transparent 38%),
     linear-gradient(180deg, #08111f 0%, #060d19 100%);
   color: var(--text);
-  font-family: var(--font-geist-sans);
+  font-family: var(--font-geist-sans), serif;
 }
 
 main {
@@ -135,7 +135,7 @@ ul {
 .brand-core {
   position: relative;
   z-index: 1;
-  font-family: var(--font-geist-mono);
+  font-family: var(--font-geist-mono), serif;
   font-size: 0.86rem;
   letter-spacing: 0.09em;
   color: #e2f5ff;
@@ -292,7 +292,7 @@ h1 {
 }
 
 .mono {
-  font-family: var(--font-geist-mono);
+  font-family: var(--font-geist-mono), serif;
   font-size: 0.77rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -356,7 +356,7 @@ h1 {
   display: inline-block;
   color: #9df8e7;
   margin-bottom: 0.52rem;
-  font-family: var(--font-geist-mono);
+  font-family: var(--font-geist-mono), serif;
 }
 
 .value {
