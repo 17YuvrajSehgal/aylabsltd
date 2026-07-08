@@ -36,29 +36,41 @@ const geistMono = localFont({
   display: "swap",
 });
 
+const description =
+  "AY LABS LTD is an IT engineering partner that designs, builds, and runs production software, AI systems, and cloud infrastructure for teams that ship serious software.";
+
+// Absolute base for OG/canonical URLs.
+// - Local dev: localhost
+// - Vercel: the deployment's production URL (set automatically)
+// - Custom domain later: set NEXT_PUBLIC_SITE_URL in the Vercel project
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
+  ? process.env.NEXT_PUBLIC_SITE_URL
+  : process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : "http://localhost:3000";
+
 export const metadata: Metadata = {
-  title: "AYLabs | AI & Software Development Studio",
-  description:
-    "AYLabs builds AI systems, web platforms, and mobile applications that win markets. Dedicated product squads for startups and enterprise teams.",
+  metadataBase: new URL(siteUrl),
+  title: "AY LABS LTD | Software, AI & Cloud Engineering",
+  description,
   keywords: [
-    "AI development",
     "software engineering",
-    "mobile app development",
-    "LLM integration",
-    "product studio",
+    "AI development",
+    "cloud infrastructure",
+    "DevOps",
+    "custom software company",
+    "IT engineering partner",
   ],
   openGraph: {
-    title: "AYLabs | AI & Software Development Studio",
-    description:
-      "AYLabs builds AI systems, web platforms, and mobile applications that win markets.",
+    title: "AY LABS LTD | Software, AI & Cloud Engineering",
+    description,
     type: "website",
-    url: "https://aylabs.dev",
+    url: siteUrl,
   },
   twitter: {
     card: "summary_large_image",
-    title: "AYLabs | AI & Software Development Studio",
-    description:
-      "AYLabs builds AI systems, web platforms, and mobile applications that win markets.",
+    title: "AY LABS LTD | Software, AI & Cloud Engineering",
+    description,
   },
 };
 
